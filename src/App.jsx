@@ -1,8 +1,10 @@
+import Wordle from './components/Wordle';
+
 const App = () => {
 
   return (
     <>
-      App
+      <Wordle />
     </>
   );
 };
