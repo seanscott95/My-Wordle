@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <>
-      <Wordle answer={answer} />
+      {answer && <Wordle answer={answer} />}
     </>
   );
 };

@@ -23,8 +23,20 @@ const useWordle = (answer) => {
     //      add letter to box
     //      handle backspace key
     //      handle enter key, format guesses
-    const handleKeyup = () => {
-
+    const handleKeyup = ({ key }) => {
+        // Deletes last letter of guess
+        if (key === 'Backspace') {
+            setCurrentGuess((prev) => {
+                return prev.slice(0, -1);
+            });
+            return;
+        };
+        // Regex that tests to see if the key is a letter and only returns letters
+        if (/^[A-Za-z]$/.test(key)) {
+            if (currentGuess.length < 5) {
+                setCurrentGuess((prev) => prev + key);
+            };
+        };
     };
 
     // addGuess
