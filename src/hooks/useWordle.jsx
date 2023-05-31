@@ -15,7 +15,37 @@ const useWordle = (answer) => {
     const [guessIsCorrect, setGuessIsCorrect] = useState(false);
 
     const formatGuess = () => {
-        
+        // take guess and split into letters
+        const guess = currentGuess.toLowerCase().split('');
+        const ans = answer.toLowerCase().split('');
+
+        let guessArr = guess.map((item) => {
+            return {
+                key: item,
+                color: 'grey'
+            };
+        });
+
+        // Checks to see if the letters in the currentGuess are in the correct position
+        guessArr.forEach((obj, index) => {
+            // If letter is in correct position, the guessArr color will be green
+            if (ans[index] === obj.key) {
+                obj.color = 'green';
+                // set answer index to null when obj index is colored green
+                // this is done so when we check to see if a guesses letter is anywhere in the answer for yellow
+                // we cant use the green letter again to match for a yellow
+                ans[index] = null;
+            };
+        });
+        // If letter is in incorrect position, the guessArr color will be yellow
+        guessArr.forEach((obj, index) => {
+            if(ans.includes(obj.key) && obj.color !== 'green') {
+                obj.color = 'yellow';
+                ans[ans.indexOf(obj.key)] =  null;
+            };
+        });
+
+        setFormattedGuess(guessArr);
     };
 
     const handleKeyup = ({ key }) => {
@@ -37,15 +67,15 @@ const useWordle = (answer) => {
                 console.log("5 guesses done")
                 return;
             }
-            if (guessHistory.includes(currentGuess)) {
-                console.log('Already guess that')
-                return;
-            }
+            // if (guessHistory.includes(currentGuess)) {
+            //     console.log('Already guess that')
+            //     return;
+            // }
             if (currentGuess.length !== 5) {
                 console.log('Guess must be 5 letters')
                 return
             };
-            formatGuess(currentGuess);
+            formatGuess();
             setGuessHistory((prev) => prev + currentGuess)
         };
     };
