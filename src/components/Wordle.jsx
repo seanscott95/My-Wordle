@@ -1,8 +1,11 @@
 import useWordle from '../hooks/useWordle';
 
-const Wordle = () => {
+const Wordle = ({ answer }) => {
   return (
-    <div>Wordle</div>
+    <>
+      <h1>Answer: {answer}</h1>
+      <div>Wordle</div>
+    </>
   );
 };
 
