@@ -13,16 +13,11 @@ const useWordle = (answer) => {
     const [formattedGuess, setFormattedGuess] = useState([]); // array of objects, objects are letter and color
     const [guessHistory, setGuessHistory] = useState([]); // array of strings
     const [guessIsCorrect, setGuessIsCorrect] = useState(false);
-    
-    // formatedGuesses
-    //      change the guess into an object that has the correct color for each letter
-    const formattedGuesses = () => {
 
+    const formatGuess = () => {
+        
     };
-    // handleKeyup 
-    //      add letter to box
-    //      handle backspace key
-    //      handle enter key, format guesses
+
     const handleKeyup = ({ key }) => {
         // Deletes last letter of guess
         if (key === 'Backspace') {
@@ -37,6 +32,22 @@ const useWordle = (answer) => {
                 setCurrentGuess((prev) => prev + key);
             };
         };
+        if (key === 'Enter') {
+            if (turn > 5 ) {
+                console.log("5 guesses done")
+                return;
+            }
+            if (guessHistory.includes(currentGuess)) {
+                console.log('Already guess that')
+                return;
+            }
+            if (currentGuess.length !== 5) {
+                console.log('Guess must be 5 letters')
+                return
+            };
+            formatGuess(currentGuess);
+            setGuessHistory((prev) => prev + currentGuess)
+        };
     };
 
     // addGuess
@@ -47,7 +58,7 @@ const useWordle = (answer) => {
 
     };
 
-    return { turn, currentGuess, formattedGuess, guessIsCorrect, handleKeyup};
+    return { turn, currentGuess, formattedGuess, guessIsCorrect, handleKeyup, guessHistory };
 }
 
 export default useWordle;

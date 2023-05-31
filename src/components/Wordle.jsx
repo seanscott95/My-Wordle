@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import useWordle from '../hooks/useWordle';
 
 const Wordle = ({ answer }) => {
-  const { handleKeyup, currentGuess } = useWordle(answer);
+  const { handleKeyup, currentGuess, guessHistory } = useWordle(answer);
 
   useEffect(() => {
     document.addEventListener('keyup', handleKeyup);
@@ -11,12 +11,12 @@ const Wordle = ({ answer }) => {
       document.removeEventListener('keyup', handleKeyup);
     };
   }, [handleKeyup]);
-  console.log(currentGuess)
   
   return (
     <>
       <h1>Answer: {answer}</h1>
       <h1>Guess: {currentGuess}</h1>
+      <h1>History: {guessHistory}</h1>
       <div>Wordle</div>
     </>
   );
