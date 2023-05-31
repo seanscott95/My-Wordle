@@ -1,16 +1,9 @@
 import { useState } from "react";
 
 const useWordle = (answer) => {
-    // answer, string
-    // turn (1-5), number
-    // currentGuess (displays current guess that you type), 
-    // formattedGuesses (current guess, the 5 letters), array of objects, objects are letter and color
-    // guessHistory, array of strings
-    // guessIsCorrect, boolean
-
     const [turn, setTurn] = useState(0);
     const [currentGuess, setCurrentGuess] = useState('');
-    const [formattedGuess, setFormattedGuess] = useState([]); // array of objects, objects are letter and color
+    const [formattedGuesses, setFormattedGuesses] = useState([...Array(6)]); // array of objects, objects are letter and color
     const [guessHistory, setGuessHistory] = useState([]); // array of strings
     const [guessIsCorrect, setGuessIsCorrect] = useState(false);
 
@@ -38,14 +31,39 @@ const useWordle = (answer) => {
             };
         });
         // If letter is in incorrect position, the guessArr color will be yellow
-        guessArr.forEach((obj, index) => {
+        guessArr.forEach((obj) => {
             if(ans.includes(obj.key) && obj.color !== 'green') {
                 obj.color = 'yellow';
                 ans[ans.indexOf(obj.key)] =  null;
             };
         });
 
-        setFormattedGuess(guessArr);
+        return guessArr;
+    };
+
+    // addGuess
+    //      add guess to guessHistory
+    //      add 1 to turn
+    //      check to see if guess is correct
+    const addGuess = (updatedGuess) => {
+        if (currentGuess.toLowerCase() === answer.toLowerCase()) {
+            console.log('Guess is correct!!');
+            setGuessIsCorrect(true);
+        };
+
+        setTurn((prevTurn) => prevTurn + 1);
+
+        setGuessHistory((prevHistory) => {
+            return [...prevHistory, currentGuess];
+        });
+
+        setFormattedGuesses((prev) => {
+            let newGuesses = [...prev];
+            newGuesses[turn] = updatedGuess;
+            return newGuesses;
+        });
+
+        setCurrentGuess('');
     };
 
     const handleKeyup = ({ key }) => {
@@ -75,20 +93,14 @@ const useWordle = (answer) => {
                 console.log('Guess must be 5 letters')
                 return
             };
-            formatGuess();
-            setGuessHistory((prev) => prev + currentGuess)
+            const updatedGuess = formatGuess();
+            addGuess(updatedGuess);
         };
     };
 
-    // addGuess
-    //      add guess to guessHistory
-    //      add 1 to turn
-    //      check to see if guess is correct
-    const addGuess = () => {
+    
 
-    };
-
-    return { turn, currentGuess, formattedGuess, guessIsCorrect, handleKeyup, guessHistory };
+    return { turn, currentGuess, formattedGuesses, guessIsCorrect, handleKeyup, guessHistory };
 }
 
 export default useWordle;
