@@ -41,10 +41,6 @@ const useWordle = (answer) => {
         return guessArr;
     };
 
-    // addGuess
-    //      add guess to guessHistory
-    //      add 1 to turn
-    //      check to see if guess is correct
     const addGuess = (updatedGuess) => {
         if (currentGuess.toLowerCase() === answer.toLowerCase()) {
             console.log('Guess is correct!!');
@@ -84,11 +80,11 @@ const useWordle = (answer) => {
             if (turn > 5 ) {
                 console.log("5 guesses done")
                 return;
-            }
-            // if (guessHistory.includes(currentGuess)) {
-            //     console.log('Already guess that')
-            //     return;
-            // }
+            };
+            if (guessHistory.includes(currentGuess)) {
+                console.log('Already guess that')
+                return;
+            };
             if (currentGuess.length !== 5) {
                 console.log('Guess must be 5 letters')
                 return
@@ -97,8 +93,6 @@ const useWordle = (answer) => {
             addGuess(updatedGuess);
         };
     };
-
-    
 
     return { turn, currentGuess, formattedGuesses, guessIsCorrect, handleKeyup, guessHistory };
 }
