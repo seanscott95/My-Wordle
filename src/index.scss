@@ -28,6 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .row {
@@ -36,7 +37,7 @@ body {
     align-items: center;
 
     div {
-        border: 1px solid black;
+        border: 1px solid grey;
         height: 1.2em;
         width: 1.2em;
         margin: .1em;
@@ -47,23 +48,64 @@ body {
         justify-content: center;
         align-items: center;
         text-transform: capitalize;
+
+        &:nth-child(2) {
+            animation-delay: .2s;
+        }
+        &:nth-child(3) {
+            animation-delay: .4s;
+        }
+        &:nth-child(4) {
+            animation-delay: .6s;
+        }
+        &:nth-child(5) {
+            animation-delay: .8s;
+        }
     }
-}
-
-
-
-.past {
     .green {
-        background: rgb(13, 193, 13);
-        color: whitesmoke;
+        --background: rgb(13, 193, 13);
+        --border-color: rgb(17, 168, 17);
+        --color: whitesmoke;
+        animation: flip .5s ease forwards;
     }
     .yellow {
-        background: rgb(215, 215, 6);
-        color: whitesmoke;
+        --background: rgb(215, 215, 6);
+        --border-color: rgb(197, 197, 11);
+        --color: whitesmoke;
+        animation: flip .5s ease forwards;
 
     }
     .grey {
-        background: rgb(101, 100, 100);
+        --background: rgb(101, 100, 100);
+        --border-color: grey;
+        --color: whitesmoke;
+        animation: flip .5s ease forwards;
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0deg);
+        background: whitesmoke;
+        border-color: grey;
         color: whitesmoke;
+    }
+    40% {
+        transform: rotateX(90deg);
+        background: whitesmoke;
+        border-color: grey;
+        color: whitesmoke;
+    }
+    60% {
+        transform: rotateX(90deg);
+        background: var(--background);
+        border-color: var(--border-color);
+        color: var(--color);
+    }
+    100% {
+        transform: rotateX(0deg);
+        background: var(--background);
+        border-color: var(--border-color);
+        color: var(--color);
     }
 }
