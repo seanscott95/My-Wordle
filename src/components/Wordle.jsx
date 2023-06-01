@@ -13,13 +13,7 @@ const Wordle = ({ answer }) => {
     };
   }, [handleKeyup]);
 
-  // create grid
-  // apply current guess to first grid
-  // apply formattedGuesses to grid, 6 grids minus by how many guesses
-  // shows some empty grids when no guess is done
-  // pressing enter
-  //    animate grids when entering
-  //    add css color to grids for different colors
+  // animate grids when entering
 
   // create modal for end of game
   // animate model
@@ -39,6 +33,7 @@ const Wordle = ({ answer }) => {
       <Grid
         formattedGuesses={formattedGuesses}
         currentGuess={currentGuess}
+        turn={turn}
       />
     </>
   );

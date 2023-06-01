@@ -34,17 +34,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    div {
+        border: 1px solid black;
+        height: 1.2em;
+        width: 1.2em;
+        margin: .1em;
+        background: whitesmoke;
+        color: black;
+        font-size: $lrgFontSize;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: capitalize;
+    }
 }
 
-.row div {
-    border: 1px solid black;
-    height: 1.2em;
-    width: 1.2em;
-    margin: .1em;
-    background: whitesmoke;
-    color: black;
-    font-size: $lrgFontSize;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+
+.past {
+    .green {
+        background: rgb(13, 193, 13);
+        color: whitesmoke;
+    }
+    .yellow {
+        background: rgb(215, 215, 6);
+        color: whitesmoke;
+
+    }
+    .grey {
+        background: rgb(101, 100, 100);
+        color: whitesmoke;
+    }
 }

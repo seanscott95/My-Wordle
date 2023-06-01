@@ -1,27 +1,18 @@
 import Row from "./Row";
 
-const Grid = ({ formattedGuesses, currentGuess }) => {
+const Grid = ({ formattedGuesses, currentGuess, turn }) => {
     return (
         <>
-        {
-            formattedGuesses.map((item, i) => {
-                return <Row guess={item} key={i} />
-            })
-        }
-            {/* {formattedGuesses ?
-                formattedGuesses.map((item) => {
-                    return <Row guess={item} />
-                }) :
-                <>
-                    <Row />
-                    <Row />
-                    <Row />
-                    <Row />
-                    <Row />
-                    <Row />
-                </>
-
-            } */}
+            {formattedGuesses.map((item, i) => {
+                if (turn === i) {
+                    return <Row key={i} currentGuess={currentGuess} />
+                };
+                return <Row
+                    guess={item}
+                    turn={turn}
+                    key={i}
+                />
+            })}
         </>
     );
 };

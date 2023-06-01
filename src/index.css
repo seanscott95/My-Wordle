@@ -30,7 +30,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 .row div {
   border: 1px solid black;
   height: 1.2em;
@@ -42,4 +41,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-transform: capitalize;
+}
+
+.past .green {
+  background: rgb(13, 193, 13);
+  color: whitesmoke;
+}
+.past .yellow {
+  background: rgb(215, 215, 6);
+  color: whitesmoke;
+}
+.past .grey {
+  background: rgb(101, 100, 100);
+  color: whitesmoke;
 }/*# sourceMappingURL=index.css.map */
