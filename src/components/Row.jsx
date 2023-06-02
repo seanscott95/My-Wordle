@@ -15,7 +15,7 @@ const Row = ({ guess, currentGuess }) => {
         return (
             <div className='row current'>
                 {letterArr.map((item, i) => (
-                    <div key={i}>{item}</div>
+                    <div key={i} className='entered'>{item}</div>
                 ))}
                 {[...Array(5 - letterArr.length)].map((_, i) => (
                     <div key={i}></div>

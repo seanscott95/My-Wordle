@@ -31,13 +31,15 @@ body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* ------------ Components ------------*/
+/* ------ Row ------*/
 .row {
     display: flex;
     justify-content: center;
     align-items: center;
 
     div {
-        border: 1px solid grey;
+        border: 2px solid grey;
         height: 1.2em;
         width: 1.2em;
         margin: .1em;
@@ -81,7 +83,13 @@ body {
         --color: whitesmoke;
         animation: flip .5s ease forwards;
     }
+    &.current > .entered {    
+        animation: bounce .2s ease-in-out forwards;
+    }
 }
+
+
+/* ------------ Animations ------------*/
 
 @keyframes flip {
     0% {
@@ -107,5 +115,18 @@ body {
         background: var(--background);
         border-color: var(--border-color);
         color: var(--color);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.0);
+        border-color: rgb(83, 79, 79);
     }
 }
