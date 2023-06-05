@@ -7,6 +7,14 @@ const useWordle = (answer) => {
     const [guessHistory, setGuessHistory] = useState([]); // array of strings
     const [guessIsCorrect, setGuessIsCorrect] = useState(false);
 
+    // Creates an array of strings for each letter in the alphabet
+    // Converts the array by using the alphabets char code numbers
+    const arr = Array.from(Array(26)).map((_, int) => String.fromCharCode(int + 65));
+    // Converts arr of strings to an array with each letter as a key
+    const keysArrTemplate = arr.reduce((acc, curr) => (acc[curr] = 'normal', acc), []);
+
+    const [usedKeys, setUsedKeys] = useState(keysArrTemplate);
+
     const formatGuess = () => {
         // take guess and split into letters
         const guess = currentGuess.toLowerCase().split('');
@@ -32,9 +40,9 @@ const useWordle = (answer) => {
         });
         // If letter is in incorrect position, the guessArr color will be yellow
         guessArr.forEach((obj) => {
-            if(ans.includes(obj.key) && obj.color !== 'green') {
+            if (ans.includes(obj.key) && obj.color !== 'green') {
                 obj.color = 'yellow';
-                ans[ans.indexOf(obj.key)] =  null;
+                ans[ans.indexOf(obj.key)] = null;
             };
         });
 
@@ -59,6 +67,33 @@ const useWordle = (answer) => {
             return newGuesses;
         });
 
+        setUsedKeys((prevUsedKeys) => {
+            let newKeys = { ...prevUsedKeys };
+
+            formattedGuesses.forEach((letter) => {
+                if (!letter) {
+                    return;
+                };
+                letter.forEach((l) => {
+                    const currentColor = newKeys[l.key];
+                    if (l.color === 'green') {
+                        newKeys[l.key.toUpperCase()] = 'green';
+                        return;
+                    };
+                    if (l.color === 'yellow' && currentColor !== 'green') {
+                        newKeys[l.key.toUpperCase()] = 'yellow';
+                        return;
+                    };
+                    if (l.color === 'grey' && currentColor !== 'green' && currentColor !== 'yellow') {
+                        newKeys[l.key.toUpperCase()] = 'grey';
+                        return;
+                    };
+                });
+            });
+
+            return newKeys;
+        });
+
         setCurrentGuess('');
     };
 
@@ -77,7 +112,7 @@ const useWordle = (answer) => {
             };
         };
         if (key === 'Enter') {
-            if (turn > 5 ) {
+            if (turn > 5) {
                 console.log("5 guesses done")
                 return;
             };
@@ -94,7 +129,7 @@ const useWordle = (answer) => {
         };
     };
 
-    return { turn, currentGuess, formattedGuesses, guessIsCorrect, handleKeyup, guessHistory };
+    return { turn, currentGuess, formattedGuesses, guessIsCorrect, handleKeyup, guessHistory, usedKeys };
 }
 
 export default useWordle;

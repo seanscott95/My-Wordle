@@ -4,7 +4,7 @@ import Grid from './Grid';
 import Keyboard from './Keyboard';
 
 const Wordle = ({ answer }) => {
-  const { handleKeyup, currentGuess, guessHistory, turn, formattedGuesses, guessIsCorrect } = useWordle(answer);
+  const { handleKeyup, currentGuess, turn, formattedGuesses, guessIsCorrect, usedKeys } = useWordle(answer);
 
   useEffect(() => {
     document.addEventListener('keyup', handleKeyup);
@@ -32,7 +32,9 @@ const Wordle = ({ answer }) => {
         currentGuess={currentGuess}
         turn={turn}
       />
-      <Keyboard />
+      <Keyboard 
+        usedKeys={usedKeys}
+      />
     </>
   );
 };
