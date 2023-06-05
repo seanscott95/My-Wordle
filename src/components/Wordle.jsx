@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import useWordle from '../hooks/useWordle';
 import Grid from './Grid';
+import Keyboard from './Keyboard';
 
 const Wordle = ({ answer }) => {
   const { handleKeyup, currentGuess, guessHistory, turn, formattedGuesses, guessIsCorrect } = useWordle(answer);
@@ -13,8 +14,6 @@ const Wordle = ({ answer }) => {
     };
   }, [handleKeyup]);
 
-  // animate grids when entering
-
   // create modal for end of game
   // animate model
 
@@ -24,17 +23,16 @@ const Wordle = ({ answer }) => {
 
   return (
     <>
-      <h1>Answer: {answer}</h1>
-      <h1>Guess: {currentGuess}</h1>
-      <h1>History: {guessHistory}</h1>
-      <h1>Turn: {turn}</h1>
-      <div>Wordle</div>
+      <h1>Wordle</h1>
+      <p>Answer: {answer} / Turn: {turn}</p>
+      <p>Guess: {currentGuess}</p>
 
       <Grid
         formattedGuesses={formattedGuesses}
         currentGuess={currentGuess}
         turn={turn}
       />
+      <Keyboard />
     </>
   );
 };
