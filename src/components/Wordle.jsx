@@ -31,16 +31,12 @@ const Wordle = ({ answer }) => {
     };
   }, [handleKeyup, guessIsCorrect, turn]);
 
-  // create modal for end of game
-  // animate model
-
-  // create keyboard functionality
-
   return (
     <>
-      <h1>Wordle</h1>
-      <p>Answer: {answer} / Turn: {turn}</p>
-      <p>Guess: {currentGuess}</p>
+      <h1>My Wordle</h1>
+      {/* For dev */}
+      {/* <p>Answer: {answer} / Turn: {turn}</p>
+      <p>Guess: {currentGuess}</p> */}
 
       <Grid
         formattedGuesses={formattedGuesses}

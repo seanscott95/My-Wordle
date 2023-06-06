@@ -13,7 +13,6 @@ const Keyboard = ({ usedKeys }) => {
                 <button className={usedKeys['I']}>I</button>
                 <button className={usedKeys['O']}>O</button>
                 <button className={usedKeys['P']}>P</button>
-                <button className='Backspace'>{String.fromCharCode(8592)}</button>
             </div>
             <div className='row'>
                 <button className={usedKeys['A']}>A</button>
@@ -34,7 +33,10 @@ const Keyboard = ({ usedKeys }) => {
                 <button className={usedKeys['B']}>B</button>
                 <button className={usedKeys['N']}>N</button>
                 <button className={usedKeys['M']}>M</button>
-                <button className='Enter'>Enter</button> 
+                <button className='backspace'>{String.fromCharCode(8592)}</button>
+            </div>
+            <div className="row">
+                <button className='enter'>SUBMIT</button>
             </div>
         </section>
     </>

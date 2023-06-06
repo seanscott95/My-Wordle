@@ -8,22 +8,37 @@ html {
   height: 100%;
 }
 
-body {
+p {
   font-size: clamp(0.7rem, 2.5vw + 1rem, 1.2rem);
+}
+
+body {
   width: 100%;
   height: 100%;
   max-width: 1500px;
-  margin: 0 auto;
   box-sizing: border-box;
-  background-color: #e5e5f7;
-  background-image: radial-gradient(#444cf7 0.85px, transparent 0.85px), radial-gradient(#444cf7 0.85px, #e5e5f7 0.85px);
-  background-size: 34px 34px;
-  background-position: 0 0, 17px 17px;
+  background-color: #8BC6EC;
+  background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, h2 {
+  margin: 0.5em;
+  color: transparent;
+  text-shadow: -1px 0 #1f43e0, 0 1px #7087eb, 1px 0 #526de5, 0 -1px #526de5;
+  padding: 0.5em;
+  border: 1px solid #1f43e0;
+  border-left: 5em solid transparent;
+  border-right: 5em solid transparent;
+  border-top: 0 solid transparent;
+}
+
+h1 {
+  font-size: clamp(0.7rem, 3vw + 1rem, 3rem);
 }
 
 /* ------------ Components ------------*/
@@ -40,11 +55,12 @@ body {
   margin: 0.1em;
   background: whitesmoke;
   color: black;
-  font-size: clamp(2rem, 8vw + 1rem, 4.5rem);
+  font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: capitalize;
+  border-radius: 10px;
 }
 .row div.green {
   --background: rgb(13, 193, 13);
@@ -53,8 +69,8 @@ body {
   animation: flip 0.5s ease forwards;
 }
 .row div.yellow {
-  --background: rgb(215, 215, 6);
-  --border-color: rgb(197, 197, 11);
+  --background: rgb(227, 227, 15);
+  --border-color: rgba(240, 240, 20, 0.579);
   --color: whitesmoke;
   animation: flip 0.5s ease forwards;
 }
@@ -83,19 +99,23 @@ body {
 /* ------ Keyboard ------*/
 .keyboard {
   width: 100%;
-  margin: 0.5em auto;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 1em auto;
+  padding: 0.3em 0.7em;
+  background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
 }
 .keyboard .row {
-  max-width: 500px;
   margin: 0.4em 0 0 0;
 }
 .keyboard .row button {
-  font-size: clamp(0.4rem, 2.5vw + 0.1rem, 4rem);
-  color: black;
+  font-size: clamp(0.4rem, 2.5vw + 0.1rem, 1.5rem);
   margin: 0.2em;
   padding: 0.7em 1em;
   border: none;
-  background: rgb(214, 214, 214);
+  background: #fff;
   box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
   outline: none;
   border-radius: 5px;
@@ -106,7 +126,7 @@ body {
   transition: all 0.3s ease-in;
 }
 .keyboard .row button.yellow {
-  background: rgb(215, 215, 6);
+  background: rgb(227, 227, 15);
   color: white;
   transition: all 0.3s ease-in;
 }
@@ -114,6 +134,18 @@ body {
   background: rgb(101, 100, 100);
   color: white;
   transition: all 0.3s ease-in;
+}
+.keyboard .row button.enter {
+  width: 10em;
+  background: #474343;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
+  border: 1px solid grey;
+}
+.keyboard .row button.enter:active {
+  box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
 }
 .keyboard button:active {
   box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
@@ -126,11 +158,13 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  line-height: 1.5;
 }
 .modal div {
   margin: 30% auto;
-  background: #fff;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   width: 50%;
   min-width: -moz-fit-content;
   min-width: fit-content;
@@ -140,9 +174,23 @@ body {
 }
 .modal div span {
   font-weight: bold;
-  color: #444cf7;
+  color: #ff004c;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+.modal div button {
+  padding: 0.5em;
+  margin: 0.5em;
+  font-weight: bold;
+  font-size: clamp(0.7rem, 2.5vw + 1rem, 1.2rem);
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  background: #1f43e0;
+  color: #fff;
+  border: 1px solid #444cf7;
+}
+.modal div button:hover {
+  box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
 }
 
 /* ------------ Animations ------------*/
