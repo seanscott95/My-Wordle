@@ -1,7 +1,7 @@
 const Keyboard = ({ usedKeys }) => {
   return (
     <>
-        <section className='keypad'>
+        <section className='keyboard'>
             <div className='row'>
                 <button className={usedKeys['Q']}>Q</button>
                 <button className={usedKeys['W']}>W</button>
@@ -25,7 +25,6 @@ const Keyboard = ({ usedKeys }) => {
                 <button className={usedKeys['J']}>J</button>
                 <button className={usedKeys['K']}>K</button>
                 <button className={usedKeys['L']}>L</button>
-                <button className='Enter'>Enter</button>
             </div>
             <div className='row'>
                 <button className={usedKeys['Z']}>Z</button>
@@ -35,6 +34,7 @@ const Keyboard = ({ usedKeys }) => {
                 <button className={usedKeys['B']}>B</button>
                 <button className={usedKeys['N']}>N</button>
                 <button className={usedKeys['M']}>M</button>
+                <button className='Enter'>Enter</button> 
             </div>
         </section>
     </>

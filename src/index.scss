@@ -1,7 +1,12 @@
 $primary: rgba(255, 255, 224, 0.957);
 
-$fontSize: clamp(.7rem, 2.5vw, 1.2rem);
+$fontSize: clamp(.7rem, 2.5vw + 1rem, 1.2rem);
+$keyboardFontSize: clamp(.4rem, 2.5vw + .1rem, 4rem);
 $lrgFontSize: clamp(2rem, 8vw + 1rem, 4.5rem);
+
+$green: rgb(13, 193, 13);
+$yellow: rgb(215, 215, 6);
+$grey: rgb(101, 100, 100);
 
 * {
     margin: 0;
@@ -63,31 +68,70 @@ body {
         &:nth-child(5) {
             animation-delay: .8s;
         }
-    }
-    .green {
-        --background: rgb(13, 193, 13);
-        --border-color: rgb(17, 168, 17);
-        --color: whitesmoke;
-        animation: flip .5s ease forwards;
-    }
-    .yellow {
-        --background: rgb(215, 215, 6);
-        --border-color: rgb(197, 197, 11);
-        --color: whitesmoke;
-        animation: flip .5s ease forwards;
-
-    }
-    .grey {
-        --background: rgb(101, 100, 100);
-        --border-color: grey;
-        --color: whitesmoke;
-        animation: flip .5s ease forwards;
+        &.green {
+            --background: rgb(13, 193, 13);
+            --border-color: rgb(17, 168, 17);
+            --color: whitesmoke;
+            animation: flip .5s ease forwards;
+        }
+        &.yellow {
+            --background: rgb(215, 215, 6);
+            --border-color: rgb(197, 197, 11);
+            --color: whitesmoke;
+            animation: flip .5s ease forwards;
+    
+        }
+        &.grey {
+            --background: rgb(101, 100, 100);
+            --border-color: grey;
+            --color: whitesmoke;
+            animation: flip .5s ease forwards;
+        }
     }
     &.current > .entered {    
         animation: bounce .2s ease-in-out forwards;
     }
 }
 
+/* ------ Keyboard ------*/
+.keyboard {
+    width: 100%;
+    margin: .5em auto;
+    .row {
+        max-width: 500px;
+        margin: .4em 0 0 0;
+    }
+    button {
+        font-size: $keyboardFontSize;
+        color: black;
+        margin: .2em;
+        padding: .7em 1em;
+        border: none;
+        background: rgb(214, 214, 214);
+        box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
+        outline: none;
+        border-radius: 5px;
+        &.green {
+            background: $green;
+            color: white;
+            transition: all .3s ease-in;
+        }
+        &.yellow {
+            background: $yellow;
+            color: white;
+            transition: all .3s ease-in;
+        }
+        &.grey {
+            background: $grey;
+            color: white;
+            transition: all .3s ease-in;
+        }
+        
+    }
+    button:active {
+        box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
+    }
+}
 
 /* ------------ Animations ------------*/
 

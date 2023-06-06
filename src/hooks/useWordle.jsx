@@ -90,6 +90,7 @@ const useWordle = (answer) => {
                     };
                 });
             });
+            console.log('nk', newKeys)
 
             return newKeys;
         });
