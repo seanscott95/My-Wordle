@@ -51,7 +51,6 @@ const useWordle = (answer) => {
 
     const addGuess = (updatedGuess) => {
         if (currentGuess.toLowerCase() === answer.toLowerCase()) {
-            console.log('Guess is correct!!');
             setGuessIsCorrect(true);
         };
 
@@ -69,7 +68,7 @@ const useWordle = (answer) => {
 
         setUsedKeys((prevUsedKeys) => {
             let newKeys = prevUsedKeys;
-            
+
             updatedGuess.forEach((l) => {
                 const currentColor = newKeys[l.key];
                 if (l.color === 'green') {
@@ -108,16 +107,13 @@ const useWordle = (answer) => {
         };
         if (key === 'Enter') {
             if (turn > 5) {
-                console.log("5 guesses done")
                 return;
             };
             if (guessHistory.includes(currentGuess)) {
-                console.log('Already guess that')
                 return;
             };
             if (currentGuess.length !== 5) {
-                console.log('Guess must be 5 letters')
-                return
+                return;
             };
             const updatedGuess = formatGuess();
             addGuess(updatedGuess);
