@@ -17,9 +17,7 @@ const Wordle = ({ answer }) => {
   // create modal for end of game
   // animate model
 
-  // create keyboard
   // create keyboard functionality
-  // add css color to keys
 
   return (
     <>

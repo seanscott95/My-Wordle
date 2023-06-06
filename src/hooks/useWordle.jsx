@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useWordle = (answer) => {
     const [turn, setTurn] = useState(0);
@@ -68,29 +68,23 @@ const useWordle = (answer) => {
         });
 
         setUsedKeys((prevUsedKeys) => {
-            let newKeys = { ...prevUsedKeys };
-
-            formattedGuesses.forEach((letter) => {
-                if (!letter) {
+            let newKeys = prevUsedKeys;
+            
+            updatedGuess.forEach((l) => {
+                const currentColor = newKeys[l.key];
+                if (l.color === 'green') {
+                    newKeys[l.key.toUpperCase()] = 'green';
                     return;
                 };
-                letter.forEach((l) => {
-                    const currentColor = newKeys[l.key];
-                    if (l.color === 'green') {
-                        newKeys[l.key.toUpperCase()] = 'green';
-                        return;
-                    };
-                    if (l.color === 'yellow' && currentColor !== 'green') {
-                        newKeys[l.key.toUpperCase()] = 'yellow';
-                        return;
-                    };
-                    if (l.color === 'grey' && currentColor !== 'green' && currentColor !== 'yellow') {
-                        newKeys[l.key.toUpperCase()] = 'grey';
-                        return;
-                    };
-                });
+                if (l.color === 'yellow' && currentColor !== 'green') {
+                    newKeys[l.key.toUpperCase()] = 'yellow';
+                    return;
+                };
+                if (l.color === 'grey' && currentColor !== 'green' && currentColor !== 'yellow') {
+                    newKeys[l.key.toUpperCase()] = 'grey';
+                    return;
+                };
             });
-            console.log('nk', newKeys)
 
             return newKeys;
         });

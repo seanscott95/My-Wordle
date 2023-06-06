@@ -46,18 +46,6 @@ body {
   align-items: center;
   text-transform: capitalize;
 }
-.row div:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.row div:nth-child(3) {
-  animation-delay: 0.4s;
-}
-.row div:nth-child(4) {
-  animation-delay: 0.6s;
-}
-.row div:nth-child(5) {
-  animation-delay: 0.8s;
-}
 .row div.green {
   --background: rgb(13, 193, 13);
   --border-color: rgb(17, 168, 17);
@@ -76,6 +64,18 @@ body {
   --color: whitesmoke;
   animation: flip 0.5s ease forwards;
 }
+.row div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.row div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.row div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.row div:nth-child(5) {
+  animation-delay: 0.8s;
+}
 .row.current > .entered {
   animation: bounce 0.2s ease-in-out forwards;
 }
@@ -89,7 +89,7 @@ body {
   max-width: 500px;
   margin: 0.4em 0 0 0;
 }
-.keyboard button {
+.keyboard .row button {
   font-size: clamp(0.4rem, 2.5vw + 0.1rem, 4rem);
   color: black;
   margin: 0.2em;
@@ -100,17 +100,17 @@ body {
   outline: none;
   border-radius: 5px;
 }
-.keyboard button.green {
+.keyboard .row button.green {
   background: rgb(13, 193, 13);
   color: white;
   transition: all 0.3s ease-in;
 }
-.keyboard button.yellow {
+.keyboard .row button.yellow {
   background: rgb(215, 215, 6);
   color: white;
   transition: all 0.3s ease-in;
 }
-.keyboard button.grey {
+.keyboard .row button.grey {
   background: rgb(101, 100, 100);
   color: white;
   transition: all 0.3s ease-in;
