@@ -1,7 +1,4 @@
-// import { useState, useEffect } from "react";
-
 const Keyboard = ({ usedKeys }) => {
-
   return (
     <>
         <section className='keyboard'>
