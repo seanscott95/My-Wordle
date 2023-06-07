@@ -36,7 +36,7 @@ const Keyboard = ({ usedKeys }) => {
                 <button className='backspace'>{String.fromCharCode(8592)}</button>
             </div>
             <div className="row">
-                <button className='enter'>SUBMIT</button>
+                <button className='submit'>SUBMIT</button>
             </div>
         </section>
     </>

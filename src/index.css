@@ -13,21 +13,15 @@ p {
 }
 
 body {
-  width: 100%;
   height: 100%;
-  max-width: 1500px;
+  width: 100%;
   box-sizing: border-box;
-  background-color: #8BC6EC;
-  background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1, h2 {
-  margin: 0.5em;
+h1,
+h2 {
+  margin: 0.1em auto;
   color: transparent;
   text-shadow: -1px 0 #1f43e0, 0 1px #7087eb, 1px 0 #526de5, 0 -1px #526de5;
   padding: 0.5em;
@@ -35,6 +29,8 @@ h1, h2 {
   border-left: 5em solid transparent;
   border-right: 5em solid transparent;
   border-top: 0 solid transparent;
+  text-align: center;
+  max-width: 1200px;
 }
 
 h1 {
@@ -42,6 +38,103 @@ h1 {
 }
 
 /* ------------ Components ------------*/
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  height: 100%;
+  width: 100%;
+}
+
+/* ------ Wordle ------*/
+.light {
+  background-color: #8BC6EC;
+  background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  height: 100svh;
+  width: 100%;
+}
+
+.dark {
+  max-width: 1500px;
+  background: #141E30; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100svh;
+  width: 100%;
+}
+.dark .keyboard {
+  background: #141E30;
+  background: linear-gradient(to right, #243B55, #141E30);
+}
+
+.btnGroup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 1em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+  font-size: clamp(0.7rem, 2.5vw + 1rem, 1.2rem);
+  /* The switch - the box around the slider */
+  /* Hide default HTML checkbox */
+  /* The slider */
+  /* Rounded sliders */
+}
+.btnGroup p {
+  font-size: 0.9em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.btnGroup .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.btnGroup .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.btnGroup .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+.btnGroup .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+.btnGroup input:checked + .slider {
+  background-color: #2196F3;
+}
+.btnGroup input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+.btnGroup input:checked + .slider:before {
+  transform: translateX(26px);
+}
+.btnGroup .slider.round {
+  border-radius: 34px;
+}
+.btnGroup .slider.round:before {
+  border-radius: 50%;
+}
+
 /* ------ Row ------*/
 .row {
   display: flex;
@@ -135,7 +228,7 @@ h1 {
   color: white;
   transition: all 0.3s ease-in;
 }
-.keyboard .row button.enter {
+.keyboard .row button.submit {
   width: 10em;
   background: #474343;
   color: white;
@@ -144,7 +237,7 @@ h1 {
   box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
   border: 1px solid grey;
 }
-.keyboard .row button.enter:active {
+.keyboard .row button.submit:active {
   box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
 }
 .keyboard button:active {

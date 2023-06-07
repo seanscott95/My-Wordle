@@ -9,6 +9,12 @@ const Wordle = ({ answer }) => {
 
   const [showModal, setShowModal] = useState(false);
 
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme((prev) => prev === 'light' ? 'dark' : 'light');
+  };
+
   useEffect(() => {
     document.addEventListener('keyup', handleKeyup);
 
@@ -32,7 +38,14 @@ const Wordle = ({ answer }) => {
   }, [handleKeyup, guessIsCorrect, turn]);
 
   return (
-    <>
+    <div className={theme}>
+      <div className='btnGroup'>
+        <label class="switch">
+          <input type="checkbox" onClick={toggleTheme} />
+          <span class="slider round"></span>
+        </label>
+        <p>{theme}</p>
+      </div>
       <h1>My Wordle</h1>
       {/* For dev */}
       {/* <p>Answer: {answer} / Turn: {turn}</p>
@@ -52,7 +65,7 @@ const Wordle = ({ answer }) => {
           turn={turn}
           answer={answer}
         />}
-    </>
+    </div>
   );
 };
 

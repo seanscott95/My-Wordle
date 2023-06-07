@@ -13,9 +13,9 @@ const App = () => {
   },[]);
 
   return (
-    <>
+    <div className='pageContainer'>
       {answer && <Wordle answer={answer} />}
-    </>
+    </div>
   );
 };
 

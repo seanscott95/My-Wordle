@@ -18,26 +18,21 @@ $grey: rgb(101, 100, 100);
 html {
     height: 100%;
 }
+
 p {
     font-size: $fontSize;
 }
 
 body {
-    width: 100%;
     height: 100%;
-    max-width: 1500px;
+    width: 100%;
     box-sizing: border-box;
-    background-color: #8BC6EC;
-    background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1, h2 {
-    margin: .5em;
+h1,
+h2 {
+    margin: .1em auto;
     color: transparent;
     text-shadow: -1px 0 #1f43e0, 0 1px #7087eb, 1px 0 #526de5, 0 -1px #526de5;
     padding: .5em;
@@ -45,17 +40,124 @@ h1, h2 {
     border-left: 5em solid transparent;
     border-right: 5em solid transparent;
     border-top: 0 solid transparent;
+    text-align: center;
+    max-width: 1200px;
 }
+
 h1 {
     font-size: $h1Size;
 }
 
 /* ------------ Components ------------*/
+.pageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+    height: 100%;
+    width: 100%;
+}
+
+/* ------ Wordle ------*/
+.light {
+    background-color: #8BC6EC;
+    background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    height: 100svh;
+    width: 100%;
+}
+.dark {
+    max-width: 1500px;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100svh;
+    width: 100%;
+    .keyboard {
+        background: #141E30;
+        background: -webkit-linear-gradient(to right, #243B55, #141E30);
+        background: linear-gradient(to right, #243B55, #141E30);
+    }
+}
+.btnGroup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .2em;
+    font-size: $fontSize;
+    p {
+        font-size: .9em;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    /* The switch - the box around the slider */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+    .slider.round:before {
+        border-radius: 50%;
+    }
+}
+
 /* ------ Row ------*/
 .row {
     display: flex;
     justify-content: center;
     align-items: center;
+
     div {
         border: 2px solid grey;
         height: 1.2em;
@@ -69,12 +171,14 @@ h1 {
         align-items: center;
         text-transform: capitalize;
         border-radius: 10px;
+
         &.green {
             --background: rgb(13, 193, 13);
             --border-color: rgb(17, 168, 17);
             --color: whitesmoke;
             animation: flip .5s ease forwards;
         }
+
         &.yellow {
             --background: rgb(227, 227, 15);
             --border-color: rgba(240, 240, 20, 0.579);
@@ -82,6 +186,7 @@ h1 {
             animation: flip .5s ease forwards;
 
         }
+
         &.grey {
             --background: rgb(101, 100, 100);
             --border-color: grey;
@@ -92,17 +197,21 @@ h1 {
         &:nth-child(2) {
             animation-delay: .2s;
         }
+
         &:nth-child(3) {
             animation-delay: .4s;
         }
+
         &:nth-child(4) {
             animation-delay: .6s;
         }
+
         &:nth-child(5) {
             animation-delay: .8s;
         }
     }
-    &.current > .entered {
+
+    &.current>.entered {
         animation: bounce .2s ease-in-out forwards;
     }
 }
@@ -116,8 +225,10 @@ h1 {
     background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
     border-radius: 10px;
     box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
+
     .row {
         margin: .4em 0 0 0;
+
         button {
             font-size: $keyboardFontSize;
             margin: .2em;
@@ -127,22 +238,26 @@ h1 {
             box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
             outline: none;
             border-radius: 5px;
+
             &.green {
                 background: $green;
                 color: white;
                 transition: all .3s ease-in;
             }
+
             &.yellow {
                 background: $yellow;
                 color: white;
                 transition: all .3s ease-in;
             }
+
             &.grey {
                 background: $grey;
                 color: white;
                 transition: all .3s ease-in;
             }
-            &.enter {
+
+            &.submit {
                 width: 10em;
                 background: #474343;
                 color: white;
@@ -151,11 +266,13 @@ h1 {
                 box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
                 border: 1px solid grey;
             }
-            &.enter:active {
+
+            &.submit:active {
                 box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
             }
         }
     }
+
     button:active {
         box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
     }
@@ -168,35 +285,39 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0,0,0,.3);
+    background: rgba(0, 0, 0, .3);
     line-height: 1.5;
+
     div {
         margin: 30% auto;
         background-color: #0093E9;
         background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-        
+
         width: 50%;
         min-width: fit-content;
         padding: 1em;
         border-radius: 10px;
-        box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
+
         span {
             font-weight: bold;
             color: #ff004c;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         button {
             padding: .5em;
             margin: .5em;
             font-weight: bold;
             font-size: $fontSize;
             border-radius: 10px;
-            box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
             background: #1f43e0;
             color: #fff;
             border: 1px solid #444cf7;
         }
+
         button:hover {
             box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
         }
@@ -212,18 +333,21 @@ h1 {
         border-color: grey;
         color: whitesmoke;
     }
+
     40% {
         transform: rotateX(90deg);
         background: whitesmoke;
         border-color: grey;
         color: whitesmoke;
     }
+
     60% {
         transform: rotateX(90deg);
         background: var(--background);
         border-color: var(--border-color);
         color: var(--color);
     }
+
     100% {
         transform: rotateX(0deg);
         background: var(--background);
@@ -236,9 +360,11 @@ h1 {
     0% {
         transform: scale(1.0);
     }
+
     50% {
         transform: scale(1.1);
     }
+
     100% {
         transform: scale(1.0);
         border-color: rgb(83, 79, 79);
