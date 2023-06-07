@@ -49,22 +49,46 @@ h1 {
 
 /* ------ Wordle ------*/
 .light {
-  background-color: #8BC6EC;
-  background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  background: #457fca; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 100svh;
   width: 100%;
+}
+.light .keyboard button {
+  box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
+}
+.light .keyboard button:active {
+  box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
+}
+.light .modal div {
+  background: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
 
 .dark {
   max-width: 1500px;
-  background: #141E30; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: black;
   height: 100svh;
   width: 100%;
 }
 .dark .keyboard {
-  background: #141E30;
-  background: linear-gradient(to right, #243B55, #141E30);
+  background: black;
+  box-shadow: 4px 4px 8px #474343, -4px -4px 8px #858383;
+}
+.dark .keyboard button {
+  color: #fff;
+  background: black;
+  box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
+}
+.dark .keyboard button:active {
+  box-shadow: 1px 1px 2px #fff, -1px -1px 2px #474343;
+}
+.dark .modal {
+  background: rgba(255, 255, 255, 0.3);
+}
+.dark .modal div {
+  background-color: black;
+  color: white;
 }
 
 .btnGroup {
@@ -196,7 +220,6 @@ h1 {
   max-width: fit-content;
   margin: 1em auto;
   padding: 0.3em 0.7em;
-  background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
   border-radius: 10px;
   box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
 }
@@ -208,8 +231,6 @@ h1 {
   margin: 0.2em;
   padding: 0.7em 1em;
   border: none;
-  background: #fff;
-  box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
   outline: none;
   border-radius: 5px;
 }
@@ -230,8 +251,6 @@ h1 {
 }
 .keyboard .row button.submit {
   width: 10em;
-  background: #474343;
-  color: white;
   font-weight: bold;
   letter-spacing: 1px;
   box-shadow: 4px 4px 8px #474343, -4px -4px 8px #fff;
@@ -253,11 +272,10 @@ h1 {
   left: 0;
   background: rgba(0, 0, 0, 0.3);
   line-height: 1.5;
+  text-align: center;
 }
 .modal div {
   margin: 30% auto;
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   width: 50%;
   min-width: -moz-fit-content;
   min-width: fit-content;
@@ -281,9 +299,6 @@ h1 {
   background: #1f43e0;
   color: #fff;
   border: 1px solid #444cf7;
-}
-.modal div button:hover {
-  box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
 }
 
 /* ------------ Animations ------------*/
