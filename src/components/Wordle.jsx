@@ -46,11 +46,8 @@ const Wordle = ({ answer }) => {
         </label>
         <p>{theme}</p>
       </div>
-      <h1>My Wordle</h1>
-      {/* For dev */}
-      {/* <p>Answer: {answer} / Turn: {turn}</p>
-      <p>Guess: {currentGuess}</p> */}
 
+      <h1>My Wordle</h1>
       <Grid
         formattedGuesses={formattedGuesses}
         currentGuess={currentGuess}
@@ -58,6 +55,7 @@ const Wordle = ({ answer }) => {
       />
       <Keyboard
         usedKeys={usedKeys}
+        handleKeyup={handleKeyup}
       />
       {showModal &&
         <Modal
