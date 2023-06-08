@@ -40,9 +40,9 @@ const Wordle = ({ answer }) => {
   return (
     <div className={theme}>
       <div className='btnGroup'>
-        <label class="switch">
+        <label className="switch">
           <input type="checkbox" onClick={toggleTheme} />
-          <span class="slider round"></span>
+          <span className="slider round"></span>
         </label>
         <p>{theme}</p>
       </div>

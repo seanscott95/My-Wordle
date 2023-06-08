@@ -42,7 +42,6 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100svh;
   height: 100%;
   width: 100%;
 }
@@ -51,7 +50,7 @@ h1 {
 .light {
   background: #457fca; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 100svh;
+  min-height: 100svh;
   width: 100%;
 }
 .light .keyboard button {
@@ -64,11 +63,14 @@ h1 {
   background: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
+.light p {
+  color: rgb(40, 40, 40);
+}
 
 .dark {
   max-width: 1500px;
   background: black;
-  height: 100svh;
+  min-height: 100svh;
   width: 100%;
 }
 .dark .keyboard {
@@ -88,6 +90,9 @@ h1 {
 }
 .dark .modal div {
   background-color: black;
+  color: white;
+}
+.dark p {
   color: white;
 }
 
