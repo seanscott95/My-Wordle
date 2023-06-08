@@ -16,6 +16,8 @@
 
 - [SASS](https://sass-lang.com/)
 
+- [GULP](https://gulpjs.com/)
+
 - [Netlify](https://www.netlify.com/)
     
 ## Table of Contents 
@@ -26,6 +28,26 @@
 - [Questions](#Questions)
 
 ## Screenshots
+<p>Wordle Screen</p>
+<img src='https://github.com/seanscott95/My-Wordle/blob/main/src/assets/wordle.png?raw=true' alt='Wordle Screen' width='300' />
+
+<p>Dark Theme</p>
+<img src='https://github.com/seanscott95/My-Wordle/blob/main/src/assets/dark.png?raw=true' alt='Dark theme' width='300' />
+
+<p>Guess</p>
+<img src='https://github.com/seanscott95/My-Wordle/blob/main/src/assets/guess.png?raw=true' alt='Guess' width='300' />
+
+<p>Some Correct</p>
+<img src='https://github.com/seanscott95/My-Wordle/blob/main/src/assets/someCorrect.png?raw=true' alt='Some correct' width='300' />
+
+<p>Win Screen</p>
+<img src='https://github.com/seanscott95/My-Wordle/blob/main/src/assets/win.png?raw=true' alt='Win Screen' width='300' />
+
+<p>Lost Screen</p>
+<img src='https://github.com/seanscott95/My-Wordle/blob/main/src/assets/lost.png?raw=true' alt='Lost Screen' width='300' />
+
+<p>Mobile Friendly</p>
+<img src='https://github.com/seanscott95/My-Wordle/blob/main/src/assets/mobile.png?raw=true' alt='Mobile Friendly' width='200' />
 
 ## Installation
 <p>If you would like to download the application please follow these instructions:
@@ -40,6 +62,9 @@
  ```
 
 ## Usage
+<p>Use your keyboard or the virtual keyboard provided to play</p>
+<p>Toggle the theme switch for light and dark mode</p>
+<p>Press enter or click the submit button to submit your guesses</p>
 
 ## License 
 <p> This application is covered under the:</p>
