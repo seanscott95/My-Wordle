@@ -12,8 +12,6 @@ const Row = ({ guess, currentGuess }) => {
 
     if (currentGuess) {
         let letterArr = currentGuess.split('');
-        console.log('lA', letterArr)
-        console.log('lA.l', letterArr.length)
         return (
             <div className='row current'>
                 {letterArr.map((item, i) => (
