@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const useWordle = (answer) => {
     const [turn, setTurn] = useState(0);
@@ -120,7 +120,26 @@ const useWordle = (answer) => {
         };
     };
 
-    return { turn, currentGuess, formattedGuesses, guessIsCorrect, handleKeyup, guessHistory, usedKeys };
-}
+    const resetGame = () => {
+        console.log('restartGame');
+        setUsedKeys(keysArrTemplate);
+        setCurrentGuess('');
+        setGuessIsCorrect(false);
+        setTurn(0);
+        setGuessHistory([]);
+        setFormattedGuesses([...Array(6)]);
+    };
+
+    return {
+        turn,
+        currentGuess,
+        formattedGuesses,
+        guessIsCorrect,
+        handleKeyup,
+        guessHistory,
+        usedKeys,
+        resetGame,
+    };
+};
 
 export default useWordle;

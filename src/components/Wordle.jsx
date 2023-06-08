@@ -5,7 +5,7 @@ import Keyboard from './Keyboard';
 import Modal from './Modal';
 
 const Wordle = ({ answer }) => {
-  const { handleKeyup, currentGuess, turn, formattedGuesses, guessIsCorrect, usedKeys } = useWordle(answer);
+  const { handleKeyup, currentGuess, turn, formattedGuesses, guessIsCorrect, usedKeys, resetGame } = useWordle(answer);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -62,6 +62,8 @@ const Wordle = ({ answer }) => {
           guessIsCorrect={guessIsCorrect}
           turn={turn}
           answer={answer}
+          resetGame={resetGame}
+          setShowModal={setShowModal}
         />}
     </div>
   );

@@ -1,4 +1,9 @@
-const Modal = ({ guessIsCorrect, turn, answer }) => {
+const Modal = ({ guessIsCorrect, turn, answer, resetGame, setShowModal }) => {
+
+    const handlePlayAgain = () => {
+        resetGame();
+        setShowModal(false);
+    };
     return (
         <div className='modal'>
             {guessIsCorrect ?
@@ -6,14 +11,14 @@ const Modal = ({ guessIsCorrect, turn, answer }) => {
                     <h2>Congratulations!</h2>
                     <p>You guessed <span>{answer}</span> in {turn} turn(s)</p>
                     <p>Nice job, I'll win next time!</p>
-                    <button onClick={() => location.reload()}>PLAY AGAIN</button>
+                    <button onClick={() => handlePlayAgain()}>PLAY AGAIN</button>
                 </div>
                 :
                 <div>
                     <h2>Unlucky!</h2>
                     <p>The answer was <span>{answer}</span></p>
                     <p>How about another?</p>
-                    <button onClick={() => location.reload()}>PLAY AGAIN</button>
+                    <button onClick={() => handlePlayAgain()}>PLAY AGAIN</button>
                 </div>
             }
         </div>
