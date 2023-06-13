@@ -39,7 +39,6 @@ const Wordle = ({ answer, generateRandomWord }) => {
       document.removeEventListener('keyup', handleKeyup);
     };
   }, [handleKeyup, guessIsCorrect, turn]);
-  console.log('modal', showModal)
 
   return (
     <div className={theme}>
