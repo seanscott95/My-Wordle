@@ -19,24 +19,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1,
-h2 {
-  margin: 0.1em auto;
-  color: transparent;
-  text-shadow: -1px 0 #1f43e0, 0 1px #7087eb, 1px 0 #526de5, 0 -1px #526de5;
-  padding: 0.5em;
-  border: 1px solid #1f43e0;
-  border-left: 5em solid transparent;
-  border-right: 5em solid transparent;
-  border-top: 0 solid transparent;
-  text-align: center;
-  max-width: 1200px;
-}
-
-h1 {
-  font-size: clamp(0.7rem, 3vw + 1rem, 3rem);
-}
-
+/* ------------ Mixins ------------*/
 /* ------------ Components ------------*/
 .pageContainer {
   display: flex;
@@ -49,7 +32,7 @@ h1 {
 /* ------ Wordle ------*/
 .light {
   background: #457fca; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #0093E9, #47abe1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 100svh;
   width: 100%;
 }
@@ -66,9 +49,21 @@ h1 {
 .light p {
   color: rgb(40, 40, 40);
 }
+.light h1 {
+  margin: 0.5em auto;
+  color: transparent;
+  text-shadow: -1px 0 #1f43e0, 0 2px black, 1px 0 black, 0 -1px #526de5;
+  padding: 0.5em;
+  border: 2px solid #1f43e0;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-top: 0 solid transparent;
+  text-align: center;
+  max-width: 1200px;
+  font-size: clamp(0.7rem, 3vw + 1rem, 4rem);
+}
 
 .dark {
-  max-width: 1500px;
   background: black;
   min-height: 100svh;
   width: 100%;
@@ -91,22 +86,40 @@ h1 {
 .dark .modal div {
   background-color: black;
   color: white;
+  box-shadow: 1px 1px 5px #fff, -1px -1px 5px white;
 }
 .dark p {
   color: white;
+}
+.dark h1 {
+  margin: 0.5em auto;
+  color: transparent;
+  text-shadow: -1px 0 #1f43e0, 0 2px black, 1px 0 black, 0 -1px #526de5;
+  padding: 0.5em;
+  border: 2px solid #1f43e0;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-top: 0 solid transparent;
+  text-align: center;
+  max-width: 1200px;
+  font-size: clamp(0.7rem, 3vw + 1rem, 4rem);
+  text-shadow: -1px 0 whitesmoke, 0 2px grey, 1px 0 grey, 0 -1px grey;
+  border: 1px solid whitesmoke;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-top: 0 solid transparent;
 }
 
 .btnGroup {
   position: fixed;
   top: 0;
   right: 0;
-  margin: 1em 2em;
+  margin: 1em 0.3em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.2em;
-  font-size: clamp(0.7rem, 2.5vw + 1rem, 1.2rem);
   /* The switch - the box around the slider */
   /* Hide default HTML checkbox */
   /* The slider */
@@ -116,12 +129,15 @@ h1 {
   font-size: 0.9em;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: clamp(0.7rem, 2vw + 0.5rem, 1.3rem);
+  line-height: 1.5;
 }
 .btnGroup .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 1.5em;
+  height: 1em;
+  font-size: clamp(1rem, 3vw + 1rem, 2rem);
 }
 .btnGroup .switch input {
   opacity: 0;
@@ -129,6 +145,7 @@ h1 {
   height: 0;
 }
 .btnGroup .slider {
+  font-size: clamp(1rem, 3vw + 1rem, 2rem);
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -141,10 +158,8 @@ h1 {
 .btnGroup .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 1em;
+  width: 1em;
   background-color: white;
   transition: 0.4s;
 }
@@ -155,7 +170,7 @@ h1 {
   box-shadow: 0 0 1px #2196F3;
 }
 .btnGroup input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(0.5em);
 }
 .btnGroup .slider.round {
   border-radius: 34px;
@@ -281,12 +296,18 @@ h1 {
 }
 .modal div {
   margin: 30% auto;
-  width: 50%;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
+  width: 80%;
+  max-width: 700px;
   padding: 1em;
   border-radius: 10px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+.modal div h2 {
+  margin: 0.1em auto;
+  color: transparent;
+  text-shadow: -1px 0 #1f43e0, 0 1px #7087eb, 1px 0 #526de5, 0 -1px #526de5;
+  padding: 0.5em;
+  font-size: 2em;
 }
 .modal div span {
   font-weight: bold;
@@ -296,7 +317,7 @@ h1 {
 }
 .modal div button {
   padding: 0.5em;
-  margin: 0.5em;
+  margin: 1em;
   font-weight: bold;
   font-size: clamp(0.7rem, 2.5vw + 1rem, 1.2rem);
   border-radius: 10px;
