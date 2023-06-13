@@ -4,12 +4,13 @@ import Grid from './Grid';
 import Keyboard from './Keyboard';
 import Modal from './Modal';
 
-const Wordle = ({ answer }) => {
-  const { handleKeyup, currentGuess, turn, formattedGuesses, guessIsCorrect, usedKeys, resetGame } = useWordle(answer);
-
+const Wordle = ({ answer, generateRandomWord }) => {
+  const [theme, setTheme] = useState('light');
+  const [endOfGame, setEndOfGame] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const [theme, setTheme] = useState('light');
+  const { handleKeyup, currentGuess, turn, formattedGuesses, guessIsCorrect, usedKeys, resetGame } = useWordle(answer, setEndOfGame);
+
 
   const toggleTheme = () => {
     setTheme((prev) => prev === 'light' ? 'dark' : 'light');
@@ -18,24 +19,27 @@ const Wordle = ({ answer }) => {
   useEffect(() => {
     document.addEventListener('keyup', handleKeyup);
 
-    if (guessIsCorrect) {
+    if (guessIsCorrect && !endOfGame) {
       // Delays the modal appearing so the user can look at last guess
       setTimeout(() => {
         setShowModal(true);
+        setEndOfGame(true);
       }, 2000);
       document.removeEventListener('keyup', handleKeyup);
     };
-    if (!guessIsCorrect && turn > 5) {
+    if (!guessIsCorrect && turn === 6 && !endOfGame) {
       setTimeout(() => {
         setShowModal(true);
+        setEndOfGame(true);
+        document.removeEventListener('keyup', handleKeyup);
       }, 2000);
-      document.removeEventListener('keyup', handleKeyup);
     };
 
     return () => {
       document.removeEventListener('keyup', handleKeyup);
     };
   }, [handleKeyup, guessIsCorrect, turn]);
+  console.log('modal', showModal)
 
   return (
     <div className={theme}>
@@ -64,6 +68,8 @@ const Wordle = ({ answer }) => {
           answer={answer}
           resetGame={resetGame}
           setShowModal={setShowModal}
+          generateRandomWord={generateRandomWord}
+          setEndOfGame={setEndOfGame}
         />}
     </div>
   );

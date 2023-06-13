@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useWordle = (answer) => {
+const useWordle = (answer, setEndOfGame) => {
     const [turn, setTurn] = useState(0);
     const [currentGuess, setCurrentGuess] = useState('');
     const [formattedGuesses, setFormattedGuesses] = useState([...Array(6)]); // array of objects, objects are letter and color
@@ -121,13 +121,13 @@ const useWordle = (answer) => {
     };
 
     const resetGame = () => {
-        console.log('restartGame');
         setUsedKeys(keysArrTemplate);
         setCurrentGuess('');
         setGuessIsCorrect(false);
         setTurn(0);
         setGuessHistory([]);
         setFormattedGuesses([...Array(6)]);
+        setEndOfGame(true);
     };
 
     return {

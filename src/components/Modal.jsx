@@ -1,8 +1,10 @@
-const Modal = ({ guessIsCorrect, turn, answer, resetGame, setShowModal }) => {
+const Modal = ({ guessIsCorrect, turn, answer, resetGame, setShowModal, generateRandomWord, setEndOfGame }) => {
 
     const handlePlayAgain = () => {
         resetGame();
         setShowModal(false);
+        generateRandomWord();
+        setEndOfGame(false);
     };
     return (
         <div className='modal'>
